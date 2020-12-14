@@ -1,0 +1,157 @@
+import {CAR_RENTAL_GET} from "@/api";
+import useQuery from "@/utils/hook/useQuery";
+import {dateFormat} from "@/utils/utils";
+import {Image, Swiper, SwiperItem, View} from '@tarojs/components'
+import {useRouter} from "@tarojs/runtime";
+import React from 'react'
+import './index.less'
+
+export default function () {
+  const {params} = useRouter()
+  const id = parseInt(params.id)
+  const {data = {}} = useQuery(CAR_RENTAL_GET(id))
+
+  return (
+    <View className='index'>
+      <Banner data={data} />
+      <PersonData data={data} />
+      <CarData data={data} />
+      <PersonCardImg data={data} />
+      <ContractDataImg data={data} />
+      <CarDataImg data={data} />
+      <Remark data={data} />
+    </View>
+  )
+}
+
+function Banner({data}) {
+
+  return <Swiper
+    previousMargin='20rpx'
+    className='swiper'
+    nextMargin='20rpx'
+    indicatorDots
+    circular
+    autoplay
+  >
+    {data.carImg?.split(',')?.map(l => <SwiperItem>
+      <View className='img_view'>
+        <Image className='img' src={l} />
+      </View>
+    </SwiperItem>)}
+  </Swiper>
+}
+
+function PersonData({data}) {
+  return (
+    <View className='block'>
+      <View className='header'>
+        租车人信息
+      </View>
+      <View className='item_info'>
+        <View>姓名</View>
+        <View>{data.personName}</View>
+      </View>
+      <View className='item_info'>
+        <View>联系方式</View>
+        <View>{data.personPhone}</View>
+      </View>
+      <View className='item_info'>
+        <View>租赁时长</View>
+        <View>{data.leaseDuration}个月</View>
+      </View>
+      <View className='item_info'>
+        <View>押金</View>
+        <View>￥{data.deposit}</View>
+      </View>
+      <View className='item_info'>
+        <View>生效日期</View>
+        <View>{dateFormat('Y-m-d',new Date(data.effectiveDate))}</View>
+      </View>
+      <View className='item_info'>
+        <View>住址</View>
+        <View>{data.personAddress}</View>
+      </View>
+    </View>
+  )
+}
+
+function CarData({data}) {
+  return (
+    <View className='block'>
+      <View className='header'>
+        车辆信息
+      </View>
+      <View className='item_info'>
+        <View>车型</View>
+        <View>{data.carType}</View>
+      </View>
+      <View className='item_info'>
+        <View>租金</View>
+        <View>￥{data.rentNumber}</View>
+      </View>
+      <View className='item_info'>
+        <View>车牌号</View>
+        <View>{data.carNumber}</View>
+      </View>
+      <View className='item_info'>
+        <View>发动机号后六位</View>
+        <View>{data.carEngineNumber}</View>
+      </View>
+    </View>
+  )
+}
+
+function PersonCardImg({data}) {
+  return (
+    <View className='block'>
+      <View className='header'>
+        身份证照片
+      </View>
+      <View className='item_info item_info_img'>
+        {data.personCardImg?.split(',').map(i=><Image src={i} />)}
+      </View>
+    </View>
+  )
+}
+
+function ContractDataImg({data}) {
+  return (
+    <View className='block'>
+      <View className='header'>
+        合同照片
+      </View>
+      <View className='item_info item_info_img'>
+        {data.contractImg?.split(',').map(i=><Image src={i} />)}
+      </View>
+    </View>
+  )
+}
+
+
+function CarDataImg({data}) {
+  return (
+    <View className='block'>
+      <View className='header'>
+        车辆图片
+      </View>
+      <View className='item_info item_info_img'>
+        {data.carImg?.split(',').map(i=><Image src={i} />)}
+      </View>
+    </View>
+  )
+}
+
+function Remark({data}) {
+  return (
+    <View className='block'>
+      <View className='header'>
+        备注
+      </View>
+      <View className='item_info item_info_img'>
+        {data.remark}
+      </View>
+    </View>
+  )
+}
+
