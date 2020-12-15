@@ -11,6 +11,7 @@ export const PHONE_INFO = "/api/mini/getPhoneNoInfo POST"
 export const USER_INFO = "/api/mini/user"
 
 export const CAR_RENTAL_LIST = "/api/carRental/list"
+export const CAR_RENTAL_SUBMIT = "/api/carRental POST"
 export const CAR_RENTAL_GET = id => `/api/carRental/get/${id}`
 
 

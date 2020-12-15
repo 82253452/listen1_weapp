@@ -1,4 +1,5 @@
 import {CAR_RENTAL_GET} from "@/api";
+import NavBar from "@/components/NavBar";
 import useQuery from "@/utils/hook/useQuery";
 import {dateFormat} from "@/utils/utils";
 import {Image, Swiper, SwiperItem, View} from '@tarojs/components'
@@ -12,15 +13,17 @@ export default function () {
   const {data = {}} = useQuery(CAR_RENTAL_GET(id))
 
   return (
-    <View className='index'>
-      <Banner data={data} />
-      <PersonData data={data} />
-      <CarData data={data} />
-      <PersonCardImg data={data} />
-      <ContractDataImg data={data} />
-      <CarDataImg data={data} />
-      <Remark data={data} />
-    </View>
+    <NavBar title='合同详情' back home>
+      <View className='index'>
+        <Banner data={data} />
+        <PersonData data={data} />
+        <CarData data={data} />
+        <PersonCardImg data={data} />
+        <ContractDataImg data={data} />
+        <CarDataImg data={data} />
+        <Remark data={data} />
+      </View>
+    </NavBar>
   )
 }
 
@@ -66,7 +69,7 @@ function PersonData({data}) {
       </View>
       <View className='item_info'>
         <View>生效日期</View>
-        <View>{dateFormat('Y-m-d',new Date(data.effectiveDate))}</View>
+        <View>{dateFormat('Y-m-d', new Date(data.effectiveDate))}</View>
       </View>
       <View className='item_info'>
         <View>住址</View>
@@ -109,7 +112,7 @@ function PersonCardImg({data}) {
         身份证照片
       </View>
       <View className='item_info item_info_img'>
-        {data.personCardImg?.split(',').map(i=><Image src={i} />)}
+        {data.personCardImg?.split(',').map(i => <Image src={i} />)}
       </View>
     </View>
   )
@@ -122,7 +125,7 @@ function ContractDataImg({data}) {
         合同照片
       </View>
       <View className='item_info item_info_img'>
-        {data.contractImg?.split(',').map(i=><Image src={i} />)}
+        {data.contractImg?.split(',').map(i => <Image src={i} />)}
       </View>
     </View>
   )
@@ -136,7 +139,7 @@ function CarDataImg({data}) {
         车辆图片
       </View>
       <View className='item_info item_info_img'>
-        {data.carImg?.split(',').map(i=><Image src={i} />)}
+        {data.carImg?.split(',').map(i => <Image src={i} />)}
       </View>
     </View>
   )

@@ -1,12 +1,15 @@
 import {CAR_RENTAL_LIST} from "@/api";
+import NavBar from "@/components/NavBar";
 import gengduo from '@/img/gengduo@2x.png'
 
 import shangcheng from '@/img/shangcheng@2x.png'
+import {BOTTOM_GAP} from "@/utils/Const";
 import useScrollPage from "@/utils/hook/useScrollPage";
 import {Image, Text, View} from '@tarojs/components'
 import Taro from "@tarojs/taro";
 import React from 'react'
 import './index.less'
+import {useSelector} from "react-redux";
 
 const statusList = {
   0: '未生效',
@@ -18,15 +21,24 @@ const statusList = {
 
 export default function () {
 
-  const {data = []} = useScrollPage(CAR_RENTAL_LIST)
+  const user = useSelector(state => state.user)
+  const {boundingClientRect} = useSelector(state => state.theme)
+  const {bottom, right, width, height} = boundingClientRect
+
+  const {data = []} = useScrollPage(CAR_RENTAL_LIST,{},false)
 
   function toDetail(id) {
     Taro.navigateTo({url: `/pages/detail/index?id=${id}`})
   }
 
+  function userAuth() {
+    Taro.navigateTo({url: '/pages/authorize/index'})
+  }
+
   return (
+    <NavBar title='平租车'>
     <View className='index'>
-      {data.length ? data.map(d => <View className='block' onClick={()=>toDetail(d.id)}>
+      {user.id && (data.length ? data.map(d => <View className='block' onClick={()=>toDetail(d.id)}>
         <View className='header'>
           <View className='left'>
             <Image src={shangcheng} style={{width: '30rpx', height: '30rpx'}} />
@@ -51,8 +63,14 @@ export default function () {
             </View>
           </View>
         </View>
-      </View>) : <View />}
+      </View>) : <View className='index_center' style={{height:`calc(100vh - ${bottom}px - ${BOTTOM_GAP}px)`}}>
+        <View className='button'>申请租车</View>
+      </View>)}
+      {user.id||<View className='index_center' style={{height:`calc(100vh - ${bottom}px - ${BOTTOM_GAP}px)`}} onClick={userAuth}>
+        <View className='button'>登录</View>
+      </View>}
     </View>
+    </NavBar>
   )
 }
 

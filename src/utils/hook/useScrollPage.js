@@ -3,13 +3,13 @@ import {usePullDownRefresh, useReachBottom} from "@tarojs/runtime";
 import Taro from "@tarojs/taro";
 import {useEffect, useState} from "react";
 
-export default function (url, params = {}) {
+export default function (url, params = {},auth=true) {
   const [data, setData] = useState([])
   const [param, setParam] = useState(params)
   const [canFetchMore, setCanFetchMore] = useState(true)
 
   useEffect(() => {
-    request(url, param).then(res => {
+    request(url, param,auth).then(res => {
       setCanFetchMore(res.hasNextPage)
       param.page===1?setData(res.list):setData(d => [...d, ...res.list])
       Taro.stopPullDownRefresh()

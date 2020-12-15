@@ -18,6 +18,10 @@ const config = {
     '@/components': path.resolve(__dirname, '..', 'src/components'),
     '@/utils': path.resolve(__dirname, '..', 'src/utils'),
     '@/img': path.resolve(__dirname, '..', 'src/img'),
+    '@/actions': path.resolve(__dirname, '..', 'src/actions'),
+    '@/constants': path.resolve(__dirname, '..', 'src/constants'),
+    '@/reducers': path.resolve(__dirname, '..', 'src/reducers'),
+    '@/store': path.resolve(__dirname, '..', 'src/store'),
     '@/api': path.resolve(__dirname, '..', 'src/api'),
   },
   copy: {
