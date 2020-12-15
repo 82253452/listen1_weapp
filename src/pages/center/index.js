@@ -27,7 +27,7 @@ export default function () {
   const dispatch = useDispatch()
 
   function userAuth() {
-    Taro.navigateTo({url: '/pages/authorize/index'})
+    user.id || Taro.navigateTo({url: '/pages/authorize/index'})
   }
 
   useDidShow(() => {
