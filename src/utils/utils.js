@@ -62,8 +62,6 @@ export function validated(rules, param) {
         }
       }
     }
-
-
     return true
   })
 }

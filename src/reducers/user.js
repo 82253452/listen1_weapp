@@ -1,7 +1,7 @@
 import {SET_LOCATION, SET_PHONE, SET_USER} from "@/constants/user";
 
 const INITIAL_STATE = {
-
+  loading:true
 }
 
 export default function (state = INITIAL_STATE, action) {
@@ -9,7 +9,8 @@ export default function (state = INITIAL_STATE, action) {
     case SET_USER:
       return {
         ...state,
-        ...action.state
+        ...action.state,
+        loading:false
       }
     case SET_PHONE:
       return {

@@ -56,7 +56,6 @@ export default function () {
 }
 
 function Header() {
-  const user = useSelector(state => state.user)
 
   function toOrder() {
     Taro.switchTab({url: '/pages/index/index'})
@@ -64,9 +63,7 @@ function Header() {
 
   function money() {
     Taro.showModal({
-      title: '押金', content: `
-        押金0元
-    `, showCancel: false
+      title: '押金', content: `押金0元`, showCancel: false
     })
   }
   function toRental(){

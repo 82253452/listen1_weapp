@@ -29,7 +29,7 @@ export default function () {
 
 function Banner({data}) {
 
-  return <Swiper
+  return data.carImg?<Swiper
     previousMargin='20rpx'
     className='swiper'
     nextMargin='20rpx'
@@ -37,12 +37,12 @@ function Banner({data}) {
     circular
     autoplay
   >
-    {data.carImg?.split(',')?.map(l => <SwiperItem>
-      <View className='img_view'>
-        <Image className='img' src={l} />
-      </View>
-    </SwiperItem>)}
-  </Swiper>
+      {data.carImg?.split(',')?.map(l => <SwiperItem>
+        <View className='img_view'>
+          <Image className='img' src={l} />
+        </View>
+      </SwiperItem>)}
+    </Swiper>:<View />
 }
 
 function PersonData({data}) {
@@ -80,7 +80,7 @@ function PersonData({data}) {
 }
 
 function CarData({data}) {
-  return (
+  return data.carType?
     <View className='block'>
       <View className='header'>
         车辆信息
@@ -101,8 +101,8 @@ function CarData({data}) {
         <View>发动机号后六位</View>
         <View>{data.carEngineNumber}</View>
       </View>
-    </View>
-  )
+    </View>:<View />
+
 }
 
 function PersonCardImg({data}) {
@@ -119,7 +119,7 @@ function PersonCardImg({data}) {
 }
 
 function ContractDataImg({data}) {
-  return (
+  return data.contractImg?
     <View className='block'>
       <View className='header'>
         合同照片
@@ -127,13 +127,12 @@ function ContractDataImg({data}) {
       <View className='item_info item_info_img'>
         {data.contractImg?.split(',').map(i => <Image src={i} />)}
       </View>
-    </View>
-  )
+    </View>:<View />
 }
 
 
 function CarDataImg({data}) {
-  return (
+  return data.carImg?
     <View className='block'>
       <View className='header'>
         车辆图片
@@ -141,12 +140,11 @@ function CarDataImg({data}) {
       <View className='item_info item_info_img'>
         {data.carImg?.split(',').map(i => <Image src={i} />)}
       </View>
-    </View>
-  )
+    </View>:<View />
 }
 
 function Remark({data}) {
-  return (
+  return data.remark?
     <View className='block'>
       <View className='header'>
         备注
@@ -154,7 +152,6 @@ function Remark({data}) {
       <View className='item_info item_info_img'>
         {data.remark}
       </View>
-    </View>
-  )
+    </View>:<View />
 }
 
