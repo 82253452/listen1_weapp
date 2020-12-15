@@ -23,6 +23,8 @@ export default function ({children}) {
     store.dispatch(setViewHeight(windowHeight - boundingClientRect.bottom - BOTTOM_GAP))
     getUserInfo().then(res => {
       store.dispatch(setUser(res))
+    }).catch(()=>{
+      store.dispatch(setUser({}))
     })
     // Taro.getLocation({type: 'wgs84'}).then(res => {
     //   store.dispatch(setLocation(res))
