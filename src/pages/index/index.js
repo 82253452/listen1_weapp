@@ -3,7 +3,7 @@ import NavBar from "@/components/NavBar";
 import gengduo from '@/img/gengduo@2x.png'
 import shangcheng from '@/img/shangcheng@2x.png'
 import {BOTTOM_GAP} from "@/utils/Const";
-import useScrollPage from "@/utils/hook/useScrollPage";
+import useDidShowScrollPage from "@/utils/hook/useDidShowScrollPage";
 import {Image, Text, View} from '@tarojs/components'
 import Taro from "@tarojs/taro";
 import React from 'react'
@@ -26,7 +26,7 @@ export default function () {
 
   console.log('user', user)
 
-  const {data = []} = useScrollPage(CAR_RENTAL_LIST, {}, false)
+  const {data = []} = useDidShowScrollPage(CAR_RENTAL_LIST, {}, false)
 
   function toDetail(id) {
     Taro.navigateTo({url: `/pages/detail/index?id=${id}`})

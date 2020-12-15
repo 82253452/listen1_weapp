@@ -24,9 +24,9 @@ export default function ({children}) {
     getUserInfo().then(res => {
       store.dispatch(setUser(res))
     })
-    Taro.getLocation({type: 'wgs84'}).then(res => {
-      store.dispatch(setLocation(res))
-    })
+    // Taro.getLocation({type: 'wgs84'}).then(res => {
+    //   store.dispatch(setLocation(res))
+    // })
   })
 
   return (

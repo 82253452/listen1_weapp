@@ -36,7 +36,6 @@ export default function () {
     })
   })
 
-
   return <View className='container'>
     <View className='user-info' style={{paddingTop: `${bottom + BOTTOM_GAP}px`}}>
       <View className='info' onClick={userAuth}>
