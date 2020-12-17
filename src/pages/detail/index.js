@@ -18,9 +18,11 @@ export default function () {
         <Banner data={data} />
         <PersonData data={data} />
         <CarData data={data} />
+        <PersonDataImg data={data} />
         <PersonCardImg data={data} />
         <ContractDataImg data={data} />
         <CarDataImg data={data} />
+        <DriversDataImg data={data} />
         <Remark data={data} />
       </View>
     </NavBar>
@@ -103,6 +105,31 @@ function CarData({data}) {
       </View>
     </View>:<View />
 
+}
+
+function PersonDataImg({data}){
+  return (
+    <View className='block'>
+      <View className='header'>
+        本人照片
+      </View>
+      <View className='item_info item_info_img'>
+        {data.personImg?.split(',').map(i => <Image src={i} />)}
+      </View>
+    </View>
+  )
+}
+function DriversDataImg({data}){
+  return (
+    <View className='block'>
+      <View className='header'>
+        驾驶本照片
+      </View>
+      <View className='item_info item_info_img'>
+        {data.driversLicenseImg?.split(',').map(i => <Image src={i} />)}
+      </View>
+    </View>
+  )
 }
 
 function PersonCardImg({data}) {

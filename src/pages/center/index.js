@@ -56,6 +56,8 @@ export default function () {
 
 function Header() {
 
+  const user = useSelector(state => state.user)
+
   function toOrder() {
     Taro.switchTab({url: '/pages/index/index'})
   }
@@ -65,8 +67,10 @@ function Header() {
       title: '押金', content: `押金0元`, showCancel: false
     })
   }
-  function toRental(){
-    Taro.navigateTo({url: '/pages/rental/index'})
+
+  function toRental() {
+    user.id || Taro.navigateTo({url: '/pages/authorize/index'})
+    user.id && Taro.navigateTo({url: '/pages/rental/index'})
   }
 
   return <Panel style={{marginTop: '-45rpx', padding: '40rpx 0'}}>
