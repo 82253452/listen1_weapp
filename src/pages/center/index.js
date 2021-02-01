@@ -59,7 +59,7 @@ function Header() {
   const user = useSelector(state => state.user)
 
   function toOrder() {
-    Taro.switchTab({url: '/pages/index/index'})
+    Taro.navigateTo({url: '/pages/contract/index'})
   }
 
   function money() {

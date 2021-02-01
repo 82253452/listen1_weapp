@@ -52,7 +52,7 @@ export default function () {
     Taro.navigateBack()
   }
 
-  return <NavBar title='租赁申请' back home viewBackGround='#fff'>
+  return <NavBar title='租赁申请' back home>
     <View className='container'>
       <Panel padding={0} space={0} borderRadius={0} style={{paddingBottom: '30rpx'}}>
         <PanelItemInputNew title='姓名' value={data.personName} placeholder='请输入姓名'
@@ -84,7 +84,7 @@ export default function () {
           onChange={e => setData({...data, driversLicenseImg: e})}
         />
       </Panel>
-      <View className='button' onClick={handleSubmit}>
+      <View className='button card' onClick={handleSubmit}>
         提交
       </View>
     </View>

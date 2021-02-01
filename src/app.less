@@ -1,3 +1,117 @@
-page{
-  background: #F3F5F4;
+@background: #e3edf7;
+@shadowColor:#d3e0ec;//阴影
+@anaColor:#c3d3e2;//渐变色 加强质感
+@pressColor:#deeaf5;//渐变色 加强质感
+@borderRadios:50px;
+
+@color: #3C475D;
+@b3:#bebebe;
+
+page {
+  background: @background;
+  color: @color;
+}
+.text-shadow{
+  text-shadow: rgba(39, 44, 54,0.2) 0 2px 0;
+}
+
+//普通阴影卡片
+.card{
+  border-radius: 50px;
+  border:2px transparent solid;
+  background: @background;
+  box-shadow: 10px 10px 20px @shadowColor,
+    -10px -10px 20px #ffffff;
+  //加强质感卡片
+}
+
+.card_border{
+  border:4px solid @pressColor !important;
+}
+
+.card_strengthen{
+  .card();
+  position: relative;
+}
+.card_strengthen::after{
+  position: absolute;
+  top: -4px; bottom: -4px;
+  left: -4px; right: -4px;
+  background: linear-gradient(to bottom right,#fff, @anaColor);
+  content: '';
+  z-index: -1;
+  border-radius: @borderRadios;
+}
+.card_n{
+  box-shadow: inset 10px 10px 10px #c7d8e8,
+    inset -10px -10px 10px #ffffff;
+  border:4px solid @background;
+  border-radius: @borderRadios;
+  position: relative;
+  background: @background;
+  box-sizing: border-box;
+  padding:8px;
+}
+
+.card_n::after{
+  position: absolute;
+  top: -8px; bottom:-8px;
+  left: -8px; right: -8px;
+  content: '';
+  z-index: -1;
+  border-radius: @borderRadios;
+  background: linear-gradient(to bottom right,#fff, @anaColor);
+  box-sizing: border-box;
+}
+.card_n_strengthen{
+  .card_n();
+}
+.card_n_strengthen::after{
+  position: absolute;
+  top: -12px; bottom:-12px;
+  left: -12px; right: -12px;
+  content: '';
+  z-index: -1;
+  border-radius: @borderRadios;
+  background: linear-gradient(to bottom right,#fff, @anaColor);
+  border:4px solid #deeaf5;
+  box-sizing: border-box;
+}
+.btn {
+  border-radius: 50px;
+  border:2px transparent solid;
+  background: @background;
+  box-shadow: 10px 10px 20px @shadowColor,
+    -10px -10px 20px #ffffff;
+  position: relative;
+}
+.btn::after{
+  position: absolute;
+  top: -4px; bottom: -4px;
+  left: -4px; right: -4px;
+  background: linear-gradient(#fff, @anaColor);
+  content: '';
+  z-index: -1;
+  border-radius: @borderRadios;
+}
+
+.btn_pr {
+  border-radius: 50px;
+  background: linear-gradient(145deg, #aeb8e6, #f0f0f0);
+  box-shadow: 20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
+}
+
+.btn_or {
+  border-radius: 50px;
+  background: linear-gradient(145deg, #f0f0f0, #cacaca);
+  box-shadow: 20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
+}
+
+.btn_ot {
+  border-radius: 50px;
+  background: #e0e0e0;
+  box-shadow: inset 20px 20px 60px #bebebe,
+    inset -20px -20px 60px #ffffff;
 }

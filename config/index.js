@@ -23,6 +23,7 @@ const config = {
     '@/reducers': path.resolve(__dirname, '..', 'src/reducers'),
     '@/store': path.resolve(__dirname, '..', 'src/store'),
     '@/api': path.resolve(__dirname, '..', 'src/api'),
+    '@/iconfont': path.resolve(__dirname, '..', 'src/iconfont'),
   },
   copy: {
     patterns: [

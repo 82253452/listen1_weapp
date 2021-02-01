@@ -4,6 +4,7 @@ import useQuery from "@/utils/hook/useQuery";
 import {dateFormat} from "@/utils/utils";
 import {Image, Swiper, SwiperItem, View} from '@tarojs/components'
 import {useRouter} from "@tarojs/runtime";
+import Taro from '@tarojs/taro'
 import React from 'react'
 import './index.less'
 
@@ -31,7 +32,7 @@ export default function () {
 
 function Banner({data}) {
 
-  return data.carImg?<Swiper
+  return data.carImg ? <Swiper
     previousMargin='20rpx'
     className='swiper'
     nextMargin='20rpx'
@@ -39,12 +40,12 @@ function Banner({data}) {
     circular
     autoplay
   >
-      {data.carImg?.split(',')?.map(l => <SwiperItem>
-        <View className='img_view'>
-          <Image className='img' src={l} />
-        </View>
-      </SwiperItem>)}
-    </Swiper>:<View />
+    {data.carImg?.split(',')?.map(l => <SwiperItem>
+      <View className='img_view'>
+        <Image className='img' src={l} />
+      </View>
+    </SwiperItem>)}
+  </Swiper> : <View />
 }
 
 function PersonData({data}) {
@@ -81,8 +82,15 @@ function PersonData({data}) {
   )
 }
 
+function prevImg(src) {
+  Taro.previewImage({
+    current: src,
+    urls: [src]
+  })
+}
+
 function CarData({data}) {
-  return data.carType?
+  return data.carType ?
     <View className='block'>
       <View className='header'>
         车辆信息
@@ -103,30 +111,31 @@ function CarData({data}) {
         <View>发动机号后六位</View>
         <View>{data.carEngineNumber}</View>
       </View>
-    </View>:<View />
+    </View> : <View />
 
 }
 
-function PersonDataImg({data}){
+function PersonDataImg({data}) {
   return (
     <View className='block'>
       <View className='header'>
         本人照片
       </View>
       <View className='item_info item_info_img'>
-        {data.personImg?.split(',').map(i => <Image src={i} />)}
+        {data.personImg?.split(',').map(i => <Image src={i}  onClick={() => prevImg(i)} />)}
       </View>
     </View>
   )
 }
-function DriversDataImg({data}){
+
+function DriversDataImg({data}) {
   return (
     <View className='block'>
       <View className='header'>
         驾驶本照片
       </View>
       <View className='item_info item_info_img'>
-        {data.driversLicenseImg?.split(',').map(i => <Image src={i} />)}
+        {data.driversLicenseImg?.split(',').map(i => <Image src={i} onClick={() => prevImg(i)} />)}
       </View>
     </View>
   )
@@ -139,39 +148,39 @@ function PersonCardImg({data}) {
         身份证照片
       </View>
       <View className='item_info item_info_img'>
-        {data.personCardImg?.split(',').map(i => <Image src={i} />)}
+        {data.personCardImg?.split(',').map(i => <Image src={i}  onClick={() => prevImg(i)} />)}
       </View>
     </View>
   )
 }
 
 function ContractDataImg({data}) {
-  return data.contractImg?
+  return data.contractImg ?
     <View className='block'>
       <View className='header'>
         合同照片
       </View>
       <View className='item_info item_info_img'>
-        {data.contractImg?.split(',').map(i => <Image src={i} />)}
+        {data.contractImg?.split(',').map(i => <Image src={i}  onClick={() => prevImg(i)} />)}
       </View>
-    </View>:<View />
+    </View> : <View />
 }
 
 
 function CarDataImg({data}) {
-  return data.carImg?
+  return data.carImg ?
     <View className='block'>
       <View className='header'>
         车辆图片
       </View>
       <View className='item_info item_info_img'>
-        {data.carImg?.split(',').map(i => <Image src={i} />)}
+        {data.carImg?.split(',').map(i => <Image src={i}  onClick={() => prevImg(i)} />)}
       </View>
-    </View>:<View />
+    </View> : <View />
 }
 
 function Remark({data}) {
-  return data.remark?
+  return data.remark ?
     <View className='block'>
       <View className='header'>
         备注
@@ -179,6 +188,6 @@ function Remark({data}) {
       <View className='item_info item_info_img'>
         {data.remark}
       </View>
-    </View>:<View />
+    </View> : <View />
 }
 

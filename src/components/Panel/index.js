@@ -4,8 +4,7 @@ import './index.less'
 
 export default forwardRef(({children, style, space = 30}, ref) => {
 
-    return <View className='panel-container' style={{
-      width: `calc(100% - ${space * 2}rpx)`,
+    return <View className='panel-container card' style={{
       ...style
     }}
     >

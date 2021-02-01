@@ -7,7 +7,7 @@ import guanbi from "@/img/guanbi.png";
 import './index.less'
 
 
-export default function Index({max = 9, onChange, children, style, width=124, height=124, close, value,demo}) {
+export default function Index({max = 9, onChange, children, style, width = 124, height = 124, close, value, demo}) {
   const url = 'http://img.gz2c.com'
   const [images, setImages] = useState(value ? value.split(',') : []);
 
@@ -58,12 +58,21 @@ export default function Index({max = 9, onChange, children, style, width=124, he
     setImages([...images])
   }
 
+  function prevImg(src) {
+    Taro.previewImage({
+      current: src,
+      urls: [src]
+    })
+  }
+
   return (
     <View className='img-container'>
       <View className='images-list' style={style}>
-        {images.length?'':demo}
+        {images.length ? '' : demo}
         {images.map((item, i) => <View key={i} className='close-view'>
-          <Image className='image' src={item} style={`width:${width}rpx;height:${height}rpx`} />
+          <Image className='image' src={item} style={`width:${width}rpx;height:${height}rpx`}
+            onClick={() => prevImg(item)}
+          />
           <Image className='close' src={guanbi} onClick={() => deleteImg(i)}
             style={max === 1 || !close ? 'display:none' : ''}
           />
