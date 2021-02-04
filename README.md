@@ -7,9 +7,9 @@
 一款支持多平台音乐播放和搜索的移动音乐 App。现有版本已支持网易云音乐，待支持QQ 音乐，虾米音乐等。还有丰富的歌单管理功能。使用 Taro 开发，基于 MIT 协议开源免费。
 
 
-[![imgur](https://github.com/82253452/listen1_weapp/blob/master/src/img/8902a75b8640200478c76c4df632e3d.jpg)]()
-[![imgur](https://github.com/82253452/listen1_weapp/blob/master/src/img/de88d052834d68a9f9721798c47567d.jpg)]()
-[![imgur](https://github.com/82253452/listen1_weapp/blob/master/src/img/e97376f4ae7eb3afd2b4825e6c77f17.jpg)]()
+<img src="https://github.com/82253452/listen1_weapp/blob/master/src/img/8902a75b8640200478c76c4df632e3d.jpg" width="100px">
+<img src="https://github.com/82253452/listen1_weapp/blob/master/src/img/de88d052834d68a9f9721798c47567d.jpg" width="30%">
+<img src="https://github.com/82253452/listen1_weapp/blob/master/src/img/e97376f4ae7eb3afd2b4825e6c77f17.jpg" width="30%">
 
 ## 特性
 
