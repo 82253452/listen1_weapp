@@ -1,8 +1,8 @@
 {
   "miniprogramRoot": "./dist",
-  "projectname": "car-rental",
+  "projectname": "listen1",
   "description": "car",
-  "appid": "touristappid",
+  "appid": "wxe48fad0da38eb1e2",
   "setting": {
     "urlCheck": true,
     "es6": false,
