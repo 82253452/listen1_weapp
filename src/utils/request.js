@@ -29,28 +29,11 @@ export async function requestBase(data, auth = true) {
         reject(res)
         return
       }
-      if (res.data.code === 100 || res.data.code === 3) {
-        try {
-          await getUserInfo()
-          await request(data, auth).then(resd => resolve(resd))
-        } catch (e) {
-          auth && gotoAuthrize()
-          auth || reject(res)
-        }
-        return
-      }
-      if (res.data.code !== 0) {
-        res.data.message && await Taro.showToast({
-          title: res.data.showMsg || res.data.message,
-          icon: 'none'
-        })
-        reject(res)
-        return
-      }
-      resolve(res.data.data)
+      resolve(res.data)
     })
   })
 }
+
 
 const gotoAuthrize = debounce(() => {
   Taro.navigateTo({

@@ -18,7 +18,6 @@ page {
 //普通阴影卡片
 .card{
   border-radius: 50px;
-  border:2px transparent solid;
   background: @background;
   box-shadow: 10px 10px 20px @shadowColor,
     -10px -10px 20px #ffffff;
@@ -55,8 +54,8 @@ page {
 
 .card_n::after{
   position: absolute;
-  top: -8px; bottom:-8px;
-  left: -8px; right: -8px;
+  top: -6px; bottom:-6px;
+  left: -6px; right: -6px;
   content: '';
   z-index: -1;
   border-radius: @borderRadios;
@@ -68,8 +67,8 @@ page {
 }
 .card_n_strengthen::after{
   position: absolute;
-  top: -12px; bottom:-12px;
-  left: -12px; right: -12px;
+  top: -8px; bottom:-8px;
+  left: -8px; right: -8px;
   content: '';
   z-index: -1;
   border-radius: @borderRadios;

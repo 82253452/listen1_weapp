@@ -8,6 +8,10 @@ export default {
     'pages/authorize/index',
     'pages/rental/index',
     'pages/contract/index',
+    'pages/player/index',
+    'pages/playList/index',
+    'pages/PlayListClass/index',
+    'pages/PlayListConnect/index',
   ],
   window: {
     backgroundTextStyle: 'light',
@@ -18,19 +22,11 @@ export default {
   },
   tabBar: {
     custom:true,
-    borderStyle: 'white',
-    selectedColor: '#CE0801',
     color: '#7F8389',
     list: [{
-      text: '',
-      iconPath: 'img/shouyeb.png',
-      selectedIconPath: 'img/shouye.png',
       pagePath: 'pages/index/index',
     },
       {
-        text: '',
-        iconPath: 'img/gerenzhongxin.png',
-        selectedIconPath: 'img/agerenzhongxin.png',
         pagePath: 'pages/center/index'
       }]
   },

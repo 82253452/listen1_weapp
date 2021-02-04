@@ -1,0 +1,128 @@
+.block_view {
+  box-sizing: border-box;
+  padding: 30px 80px;
+  width: 100%;
+
+  .block {
+    width: 100%;
+    height: 160px;
+    font-size: 18px;
+    margin-top: 30px;
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+
+    .block_b {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .left {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      align-items: center;
+      justify-content: flex-start;
+
+      image {
+        width: 120px;
+        height: 120px;
+        border-radius: 20px;
+      }
+
+      text {
+        font-size: 20px;
+        font-weight: bold;
+
+      }
+
+      .name {
+        padding: 0 20px;
+        overflow: hidden; //超出一行文字自动隐藏
+        text-overflow: ellipsis; //文字隐藏后添加省略号
+        white-space: nowrap; //强制不换行
+      }
+    }
+
+    .right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .play {
+        width: 50px;
+        height: 50px;
+        margin-left: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .like{
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
+  .block::after {
+    position: absolute;
+    bottom: -8px;
+    left: -8px;
+    content: '';
+    z-index: -1;
+    background: #d3e0ec;
+    filter: blur(3px);
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: 100%;
+    height: 3px;
+  }
+}
+
+.player_top {
+  width: 90%;
+  height: 640px;
+  margin: auto;
+
+  .img {
+    padding: 10px;
+
+    image {
+      width: 100%;
+      height: 500px;
+      border-radius: 50px;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+
+    .name {
+      font-size: 28px;
+      font-weight: bold;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .button_view {
+      display: flex;
+
+      .button {
+        width: 50px;
+        height: 50px;
+        margin-left: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}

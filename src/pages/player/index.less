@@ -1,0 +1,110 @@
+.container {
+  .title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 32px;
+  }
+
+  .like {
+    text-align: center;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 70%;
+  margin: 100px auto;
+
+  .control {
+    width: 80px;
+    height: 80px;
+    border-radius: 50px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.seek_con {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+
+  .seek {
+    width: 80%;
+    height: 10px;
+    padding: 6px 0;
+  }
+
+  .seek_l {
+    background: linear-gradient(to bottom, #fff, red);
+    height: 18px;
+    border-radius: 50px;
+    margin-top: -10px;
+  }
+}
+
+.swiper {
+  height: 700px;
+  width: 100%;
+  margin: auto;
+
+  .swiper_item {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+    box-sizing: border-box;
+    align-items: flex-end;
+
+    .img_view {
+      width: 100%;
+      height: 560px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
+      margin: 20px 40px;
+
+      .img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50px;
+      }
+    }
+  }
+}
+
+.flex_top {
+  animation: toTop 1s cubic-bezier(0.19, 1, 0.22, 1);
+  animation-fill-mode: forwards;
+}
+.flex_bottom {
+  animation: toBottom 1s cubic-bezier(0.19, 1, 0.22, 1);
+  animation-fill-mode: forwards;
+}
+
+@keyframes toBottom {
+  from {
+    margin-bottom: 70px
+  }
+  to {
+    margin-bottom: 20px
+  }
+}
+
+@keyframes toTop {
+  from {
+    margin-bottom: 20px
+  }
+  to {
+    margin-bottom: 70px
+  }
+}
+

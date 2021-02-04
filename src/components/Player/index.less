@@ -1,0 +1,27 @@
+@buttonSize: 80px;
+
+.move-view-button {
+  position: fixed;
+  width: @buttonSize;
+  height: @buttonSize;
+  background: linear-gradient(to bottom right,#fff, #c3d3e2);
+  border-radius: @buttonSize;
+  box-shadow: 5px 5px 10px #d3e0ec,
+    -5px -5px 10px #ffffff;
+  .icon_view {
+    margin-left: -6px;
+    margin-top: -17px;
+  }
+}
+.view_rotate {
+  animation: rotate 5s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
