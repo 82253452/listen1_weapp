@@ -1,7 +1,7 @@
-import {addConnect, addFavorite, addPlayerAllAsync, addPlayerAsync} from "@/actions/music";
 import {PLAY_LIST_DETAIL, PLAY_LIST_SONG_DETAIL} from "@/api";
 import NavBar from "@/components/NavBar";
 import IconFont from "@/iconfont";
+import {addConnect, addFavorite, addPlayerAllAsync, addPlayerAsync} from "@/redux/music";
 import useEffectOnece from "@/utils/hook/useEffectOnece";
 import useQuery from "@/utils/hook/useQuery";
 import useUpdateEffect from "@/utils/hook/useUpdateEffect";
@@ -118,7 +118,7 @@ function Row({l, i, onPlay, card = false}) {
 
   const [show, setShow] = useState(false)
 
-  const {playIndex, play, playList,favorite} = useSelector(state => state.music)
+  const {play, favorite} = useSelector(state => state.music)
 
   const favoriteState = favorite.some(f=>f.id===l.id)
 

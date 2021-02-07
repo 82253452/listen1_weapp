@@ -1,11 +1,7 @@
-import {addFavorite, play, playIndex, setPlayList} from "@/actions/music";
-import {PLAY_SONG_URL} from "@/api";
 import NavBar from "@/components/NavBar";
 import IconFont from "@/iconfont";
-import useQuery from "@/utils/hook/useQuery";
-import useUpdateEffect from "@/utils/hook/useUpdateEffect";
+import {addFavorite, addPlayerAsync, playerIndex, setPlay, setPlayIndex} from "@/redux/music";
 import {Image, Swiper, SwiperItem, View} from '@tarojs/components'
-import {useRouter} from "@tarojs/runtime";
 import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 
@@ -53,27 +49,38 @@ function Player() {
   const dispatch = useDispatch()
   const track = playList[pIndex]
 
-  const favoriteState = favorite.some(f=>f.id===track.id)
+  const favoriteState = favorite.some(f => f.id === track.id)
 
-  function onFavorite(){
+  function onFavorite() {
     dispatch(addFavorite(track))
+  }
+
+  function playPrev() {
+    const i = (pIndex - 1) < 0 ? playList.length : (pIndex - 1)
+    dispatch(addPlayerAsync(playList[i]))
+
+  }
+
+  function playNext() {
+    const i = playList.length < (pIndex + 1) ? 0 : (pIndex + 1)
+    dispatch(addPlayerAsync(playList[i]))
   }
 
   return <View>
     <Swipers />
     <View className='title'>{track.name}</View>
     <View className='like' onClick={onFavorite}>
-      <IconFont name={`${favoriteState?'xihuan':'xihuan2'}`} size={50} />
+      <IconFont name={`${favoriteState ? 'xihuan' : 'xihuan2'}`} size={50} />
     </View>
     <Seek />
     <View className='controls'>
-      <View className='control card'>
+      <View className='control card' onClick={playPrev}>
         <IconFont name='shangyiqu' size={40} />
       </View>
-      <View className={`control  ${playState ? 'card_n' : 'card'}`} onClick={() => dispatch(play(!playState))}>
+      <View className={`control  ${playState ? 'card_n' : 'card'}`} onClick={() => dispatch(addPlayerAsync(track))}>
         <IconFont name={`${playState ? 'pause' : 'bofang'}`} size={40} />
       </View>
-      <View className='control card'>
+      <View className='control card' onClick={playNext}>
         <IconFont name='xiayiqu' size={40} />
       </View>
     </View>
@@ -85,7 +92,7 @@ function Swipers() {
   const dispatch = useDispatch()
 
   function swiperChange(d) {
-    dispatch(playIndex(d.detail.current))
+    dispatch(playerIndex(d.detail.current))
   }
 
   return <Swiper

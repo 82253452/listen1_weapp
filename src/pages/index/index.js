@@ -2,7 +2,6 @@ import {PLAY_LIST, PLAY_LIST_HOT, PLAY_RECOMMEND} from "@/api";
 import Player from "@/components/Player";
 import IconFont from "@/iconfont";
 import {BOTTOM_GAP} from "@/utils/Const";
-import useQuery from "@/utils/hook/useQuery";
 import {Image, MovableArea, Swiper, SwiperItem, View} from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import React, {useState} from 'react'

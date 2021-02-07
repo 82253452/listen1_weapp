@@ -1,5 +1,5 @@
-import {setPhone, setUser} from "@/actions/user";
 import {LOGIN, PHONE_INFO} from "@/api";
+import {setPhone, setUser} from "@/redux/user";
 import {APP_ID} from "@/utils/Const";
 import {request} from "@/utils/request";
 import Taro from "@tarojs/taro";
