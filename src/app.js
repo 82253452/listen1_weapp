@@ -1,6 +1,6 @@
-import {PLAY_LIST, PLAY_LIST_HOT, PLAY_RECOMMEND, PLAY_SONG_URL} from "@/api";
+import {IS_PUSH, PLAY_LIST, PLAY_LIST_HOT, PLAY_RECOMMEND, PLAY_SONG_URL} from "@/api";
 import rootReducer from '@/redux/index'
-import {setAudioContext, setGoodsList, setHotList, setPlayerPause, setWiperList} from "@/redux/music";
+import {setAudioContext, setGoodsList, setHotList, setIsPush, setPlayerPause, setWiperList} from "@/redux/music";
 import {setBoundingClientRect, setViewHeight, setWindowHeight, setWindowWidth} from "@/redux/theme";
 import {BOTTOM_GAP} from "@/utils/Const";
 import useEffectOnece from "@/utils/hook/useEffectOnece";
@@ -73,6 +73,9 @@ export default function ({children}) {
     })
     store.getState().music.playHotList.length || request(PLAY_LIST_HOT, {limit: 6}).then(r => {
       store.dispatch(setHotList(r.playlists))
+    })
+    request('https://super.gz2c.com/api/api/mini/isPush').then(r  =>{
+      store.dispatch(setIsPush(r.data))
     })
   }
 

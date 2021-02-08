@@ -14,6 +14,8 @@ export const CAR_RENTAL_LIST = "/api/carRental/list"
 export const CAR_RENTAL_SUBMIT = "/api/carRental POST"
 export const CAR_RENTAL_GET = id => `/api/carRental/get/${id}`
 
+export const IS_PUSH = `/api/api/mini/isPush`
+
 //精品歌单
 export const PLAY_LIST = "/top/playlist/highquality"
 //网友精选碟歌单

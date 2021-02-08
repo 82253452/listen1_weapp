@@ -38,14 +38,14 @@ export default function () {
 }
 
 function PlayList() {
-  const {playGoodList} = useSelector(state => state.music)
+  const {playGoodList,isPush} = useSelector(state => state.music)
 
   function toDetail(id) {
-    Taro.navigateTo({url: `/pages/playList/index?id=${id}`})
+    isPush || Taro.navigateTo({url: `/pages/playList/index?id=${id}`})
   }
 
   function toClass() {
-    Taro.navigateTo({url: `/pages/PlayListClass/index?url=${PLAY_LIST}`})
+    isPush ||  Taro.navigateTo({url: `/pages/PlayListClass/index?url=${PLAY_LIST}`})
   }
 
   return <View className='play_list'>
@@ -64,14 +64,14 @@ function PlayList() {
 }
 
 function PlayHotList() {
-  const {playHotList} = useSelector(state => state.music)
+  const {playHotList,isPush} = useSelector(state => state.music)
 
   function toDetail(id) {
-    Taro.navigateTo({url: `/pages/playList/index?id=${id}`})
+    isPush ||  Taro.navigateTo({url: `/pages/playList/index?id=${id}`})
   }
 
   function toClass() {
-    Taro.navigateTo({url: `/pages/PlayListClass/index?url=${PLAY_LIST_HOT}`})
+    isPush ||  Taro.navigateTo({url: `/pages/PlayListClass/index?url=${PLAY_LIST_HOT}`})
   }
 
   return <View className='play_list'>
@@ -92,14 +92,14 @@ function PlayHotList() {
 function Coonect() {
 
 
-  const {connect} = useSelector(state => state.music)
+  const {connect,isPush} = useSelector(state => state.music)
 
   function toDetail(id) {
-    Taro.navigateTo({url: `/pages/playList/index?id=${id}`})
+    isPush || Taro.navigateTo({url: `/pages/playList/index?id=${id}`})
   }
 
   function toClass() {
-    Taro.navigateTo({url: `/pages/PlayListConnect/index`})
+    isPush || Taro.navigateTo({url: `/pages/PlayListConnect/index`})
   }
 
   return connect.length?<View className='play_list'>
@@ -119,13 +119,13 @@ function Coonect() {
 
 function Swipers() {
   const [pIndex, setPIndex] = useState(4)
-  const {swiperList} = useSelector(state => state.music)
+  const {swiperList,isPush} = useSelector(state => state.music)
 
   function swiperChange(d) {
     setPIndex(d.detail.current)
   }
   function toDetail(id) {
-    Taro.navigateTo({url: `/pages/playList/index?id=${id}`})
+    isPush || Taro.navigateTo({url: `/pages/playList/index?id=${id}`})
   }
 
 

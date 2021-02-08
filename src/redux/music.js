@@ -4,6 +4,7 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const INITIAL_STATE = {
   audioContext: null,
+  isPush: false,
   play: false,//是否播放音乐
   playList: [],//播放音乐列表
   playIndex: 0,//当前播放第几个
@@ -18,6 +19,9 @@ const slice = createSlice({
   name: 'music',
   initialState: INITIAL_STATE,
   reducers: {
+    setIsPush: (state, action) => {
+      state.isPush = action.payload
+    },
     setPlay: (state, action) => {
       state.play = action.payload
       action.payload ? state.audioContext.play() : state.audioContext.pause()
@@ -77,7 +81,8 @@ export const {
   setWiperList,
   setGoodsList,
   setHotList,
-  setPlayerPause
+  setPlayerPause,
+  setIsPush
 } = slice.actions
 export default slice.reducer
 
